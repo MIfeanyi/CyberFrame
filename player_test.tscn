@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/camera.gd" type="Script" id=2]
+[ext_resource path="res://player/Bullet.gd" type="Script" id=3]
+[ext_resource path="res://player/ai_test.gd" type="Script" id=4]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 1
+background_color = Color( 0.00392157, 0.0862745, 0.160784, 1 )
+ambient_light_color = Color( 0.576471, 0.572549, 0.839216, 1 )
+
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="VisualShader" id=5]
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+
+[sub_resource type="SphereMesh" id=7]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Map" type="Spatial" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Map"]
+transform = Transform( 168.28, 0, 0, 0, 6.27176, 0, 0, 0, 74.3699, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Map/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/MeshInstance/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.821605, 0.0209358 )
+
+[node name="Area" type="Area" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.420242, 2.95025, 7.923 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player/Area"]
+transform = Transform( 15.0759, 0, 0, 0, 1, 0, 0, 0, -9.90424, -0.0163709, -1.87798, -10.4266 )
+shape = SubResource( 4 )
+
+[node name="Camera" type="Camera" parent="Player/Area"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -7 )
+
+[node name="Bullet" type="Position3D" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29898, 0, 0 )
+script = ExtResource( 3 )
+
+[node name="Particles" type="Particles" parent="Player/Bullet"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29898, -0.821605, -0.0209358 )
+emitting = false
+amount = 1
+one_shot = true
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
+
+[node name="Enemy" parent="." groups=[
+"enemy",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7078, 1.34958, 2.81063 )
+script = ExtResource( 4 )
+speed = 500
+[connection signal="body_entered" from="Player/Area" to="Player/Area" method="_on_Area_body_entered"]
