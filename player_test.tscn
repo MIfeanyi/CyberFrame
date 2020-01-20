@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/camera.gd" type="Script" id=2]
 [ext_resource path="res://player/Bullet.gd" type="Script" id=3]
 [ext_resource path="res://player/ai_test.gd" type="Script" id=4]
+[ext_resource path="res://player/D4.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -27,6 +28,7 @@ shader = SubResource( 5 )
 [node name="Spatial" type="Spatial"]
 
 [node name="Map" type="Spatial" parent="."]
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -45,6 +47,7 @@ shape = SubResource( 2 )
 environment = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.821605, 0.0209358 )
 
 [node name="Area" type="Area" parent="Player"]
@@ -76,4 +79,7 @@ draw_pass_1 = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7078, 1.34958, 2.81063 )
 script = ExtResource( 4 )
 speed = 500
+
+[node name="D4" parent="." instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.398, 4.41, 0 )
 [connection signal="body_entered" from="Player/Area" to="Player/Area" method="_on_Area_body_entered"]
