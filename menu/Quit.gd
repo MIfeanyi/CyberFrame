@@ -1,6 +1,7 @@
 extends Button
 
 func _ready():
+	text = tr("QUIT")
 	pass # Replace with function body.
 
 func _on_Quit_pressed():

@@ -73,6 +73,12 @@ ui_shoot={
 3d_physics/layer_2="players"
 3d_physics/layer_3="items"
 
+[locale]
+
+test="es"
+translations=PoolStringArray( "res://menu/lang/menu.en.translation", "res://menu/lang/menu.es.translation", "res://menu/lang/menu.ja.translation", "res://menu/lang/menu.ko.translation" )
+locale_filter=[ 0, [  ] ]
+
 [rendering]
 
 environment/default_clear_color=Color( 0, 0, 0, 1 )
