@@ -1,15 +1,15 @@
-extends Position3D
-
-var BULLET_SPEED = 1000
-var speed 
-var spawn = false
+extends Area
+var bullet_speed = 1000
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	transform = get_parent().transform
 	pass # Replace with function body.
-func spawn():
-	transform = get_parent().transform
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#speed = transform.basis.z * BULLET_SPEED
+	translate(transform.basis.z * bullet_speed * delta)
 	pass
+
+
+func _on_Coll_body_entered(body):
+	get_parent().queue_free()
+	pass # Replace with function body.
