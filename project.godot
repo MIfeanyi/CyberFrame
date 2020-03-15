@@ -75,9 +75,8 @@ ui_shoot={
 
 [locale]
 
-test="es"
+test="en"
 translations=PoolStringArray( "res://menu/lang/menu.en.translation", "res://menu/lang/menu.es.translation", "res://menu/lang/menu.ja.translation", "res://menu/lang/menu.ko.translation" )
-locale_filter=[ 0, [  ] ]
 
 [rendering]
 
