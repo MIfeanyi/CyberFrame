@@ -6,18 +6,18 @@ func getLangue():
 	return g_langue
 
 func setLangue(l):
-
 	TranslationServer.set_locale(get_item_text(l))
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("current locales: ",TranslationServer.get_loaded_locales())
 	g_langue = OS.get_locale().left(2)
-	text = tr("SELECT_LANG")
-	add_item("en")
+	text = "SELECT_LANG"
+	add_item("en_US")
 	add_item("es")
 	add_item("ja")
 	add_item("ko")
+	add_item("fr")
 	pass # Replace with function body.
 
 #func _process(delta):
