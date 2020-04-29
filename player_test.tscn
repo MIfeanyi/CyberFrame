@@ -28,7 +28,6 @@ shader = SubResource( 5 )
 [node name="Spatial" type="Spatial"]
 
 [node name="Map" type="Spatial" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -47,7 +46,6 @@ shape = SubResource( 2 )
 environment = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.821605, 0.0209358 )
 
 [node name="Area" type="Area" parent="Player"]
