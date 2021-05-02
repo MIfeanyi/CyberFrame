@@ -33,9 +33,9 @@ func lock_on():
 	enemyPos = current_enemy.global_transform.origin
 	cameraV = get_parent().global_transform.origin - enemyPos
 	$Camera.global_transform.origin = (enemyPos + cameraV + cameraV.normalized()*RADIUS)
-	#get_parent().look_at(enemyPos,Vector3(1,0,0))
 	$Camera.look_at(enemyPos,Vector3(0,1,0))
 	$Camera.v_offset = camera_offset
+	#get_parent().get_node("MeshInstance").look_at(enemyPos,Vector3(0,1,0))
 	pass
 	
 func _ready():
@@ -55,6 +55,7 @@ func _on_Area_body_entered(body):
 		if current_enemy.is_in_group("enemy"):
 			enemyPos = current_enemy.global_transform.origin
 			$Camera.look_at(enemyPos,Vector3(0,1,0))
+			get_parent().get_node("MeshInstance").look_at(enemyPos,Vector3(0,0,1))
 			locked_on = true
 	
 	pass # Replace with function body.
