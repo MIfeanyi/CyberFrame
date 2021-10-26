@@ -35,7 +35,7 @@ func lock_on():
 	$Camera.global_transform.origin = (enemyPos + cameraV + cameraV.normalized()*RADIUS)
 	$Camera.look_at(enemyPos,Vector3(0,1,0))
 	$Camera.v_offset = camera_offset
-	#get_parent().get_node("MeshInstance").look_at(enemyPos,Vector3(0,1,0))
+	get_parent().look_at(enemyPos - get_parent().global_transform.origin,Vector3(0,1,0))
 	pass
 	
 func _ready():

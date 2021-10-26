@@ -81,6 +81,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Rotate D4" parent="." instance=ExtResource( 6 )]
+
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/Play" to="MainMenu/HBoxContainer/VBoxContainer/Play" method="_on_Play_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/Quit" to="MainMenu/HBoxContainer/VBoxContainer/Quit" method="_on_Quit_pressed"]
 [connection signal="item_selected" from="MainMenu/HBoxContainer/HBoxContainer/Language" to="MainMenu/HBoxContainer/HBoxContainer/Language" method="_on_Language_item_selected"]
