@@ -1,4 +1,5 @@
-extends Sprite3D
+extends TextureProgress
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -7,14 +8,13 @@ extends Sprite3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#texture = $Viewport.get_texture()
 	pass # Replace with function body.
 
-func updatebar(v,f):
-	pass
-	#bar.updatebar(v,f)
-	
+func updatebar(v, full):
+	value = v
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if Input.is_action_pressed("ui_accept"):
+		value-=1
+	pass
