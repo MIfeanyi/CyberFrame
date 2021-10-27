@@ -3,13 +3,14 @@
 [ext_resource path="res://menu/HealthBar2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menu/HealthBar3D.gd" type="Script" id=3]
 
-[sub_resource type="ViewportTexture" id=1]
+[sub_resource type="ViewportTexture" id=2]
 viewport_path = NodePath("Viewport")
 
 [node name="Health Bar" type="Spatial"]
 
 [node name="HealthBar" type="Sprite3D" parent="."]
-texture = SubResource( 1 )
+billboard = 1
+texture = SubResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Viewport" type="Viewport" parent="."]
